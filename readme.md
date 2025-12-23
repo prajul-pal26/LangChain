@@ -1,0 +1,4 @@
+# config 
+MODEL
+BASE_URL 
+API_KEY
