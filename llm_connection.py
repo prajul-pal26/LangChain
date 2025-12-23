@@ -5,4 +5,5 @@ llm = ChatOpenAI(
     base_url=BASE_URL,
     api_key=API_KEY,
     temperature=0,
+    streaming=True,
 )
