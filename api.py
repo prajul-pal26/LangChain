@@ -13,3 +13,9 @@ async def get_lead(request: QueryRequest):
     result = lead_agent.invoke({"messages": [{"role": "user", "content": request.query}]})
     return {"response": result["messages"][-1].content}
 
+@app.post("/search_profile")
+async def search_profile(request: QueryRequest):
+    # Invoke the lead agent for profile search
+    result = lead_agent.invoke({"messages": [{"role": "user", "content": request.query}]})
+    return {"response": result["messages"][-1].content}
+
