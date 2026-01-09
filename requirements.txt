@@ -1,6 +1,16 @@
 langchain
+langchain-core
+
 langchain_community
 langchain-openai
 langchain-groq
 python-dotenv
 langchain-google-genai
+
+python-dotenv
+
+numpy
+scikit-learn
+pandas
+fastapi
+uvicorn

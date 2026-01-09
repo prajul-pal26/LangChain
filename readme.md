@@ -1,4 +1,1 @@
-# config 
-MODEL
-BASE_URL 
-API_KEY
+![](https://www.vitaliihonchar.com/blog/python-rag-api/rag-architecture.png)

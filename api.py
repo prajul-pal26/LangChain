@@ -1,21 +1,12 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
-from agent import lead_agent
+from agent import weather_agent
 
 app = FastAPI()
 
-class QueryRequest(BaseModel):
-    query: str
-
-@app.post("/lead")
-async def get_lead(request: QueryRequest):
+@app.post("/weather")
+async def get_weather(city: str):
     # Invoke the agent synchronously
-    result = lead_agent.invoke({"messages": [{"role": "user", "content": request.query}]})
-    return {"response": result["messages"][-1].content}
-
-@app.post("/search_profile")
-async def search_profile(request: QueryRequest):
-    # Invoke the lead agent for profile search
-    result = lead_agent.invoke({"messages": [{"role": "user", "content": request.query}]})
+    result = weather_agent.invoke({"messages": [{"role": "user", "content": f"Get weather for {city}"}]})
     return {"response": result["messages"][-1].content}
 
