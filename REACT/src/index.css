@@ -1,0 +1,106 @@
+/* Import Google Fonts - must be first */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap');
+
+@import "tailwindcss";
+
+/* Base Tailwind layer customizations */
+@layer base {
+  * {
+    @apply box-border;
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    @apply text-white antialiased;
+  }
+}
+
+/* Custom utility classes */
+@layer utilities {
+  .text-gradient-hero {
+    @apply bg-clip-text text-transparent bg-gradient-to-b from-white to-white/80;
+  }
+
+  .text-gradient-accent {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-indigo-300 via-white/90 to-rose-300;
+  }
+
+  .glass-card {
+    @apply bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl;
+  }
+
+  .glow-purple {
+    box-shadow: 0 0 40px rgba(124, 58, 237, 0.15);
+  }
+
+  .glow-cyan {
+    box-shadow: 0 0 40px rgba(6, 182, 212, 0.15);
+  }
+}
+
+/* Animations */
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-20px) rotate(5deg);
+  }
+}
+
+@keyframes pulse-glow {
+
+  0%,
+  100% {
+    opacity: 1;
+    box-shadow: 0 0 20px rgba(124, 58, 237, 0.4);
+  }
+
+  50% {
+    opacity: 0.8;
+    box-shadow: 0 0 40px rgba(124, 58, 237, 0.6);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-float {
+  animation: float 15s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  animation: shimmer 3s linear infinite;
+  background-size: 200% 100%;
+}
+
+/* Status dot pulse */
+@keyframes status-pulse {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.status-dot-pulse {
+  animation: status-pulse 2s infinite;
+}

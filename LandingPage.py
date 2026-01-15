@@ -549,7 +549,7 @@ st.markdown("""
         border-color: rgba(124, 58, 237, 0.5);
         color: white;
         transform: translateY(-3px);
-        box-shadow: 0 8px 25px rgba(124, 58, 237, 0.3);
+        box-shadow: 0 8px 25px rgba(124, 58, 237, 0.3);w
     }
     
     .social-icon.github:hover { background: linear-gradient(135deg, #333, #555); }
@@ -569,7 +569,7 @@ st.markdown("""
         <div class="stat-label">AI Projects</div>
     </div>
     <div class="stat-card glow-cyan">
-        <div class="stat-number">5+</div>
+        <div class="stat-number">5+</div>w
         <div class="stat-label">Technologies</div>
     </div>
     <div class="stat-card glow-purple">

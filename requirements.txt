@@ -1,18 +1,33 @@
+# LangChain Core
 langchain
 langchain-core
+langchain-community
 
-langchain_community
+# LLM Providers
 langchain-openai
 langchain-groq
-python-dotenv
 langchain-google-genai
 
+# Environment
 python-dotenv
 
+# Data Science
 numpy
 scikit-learn
 pandas
+
+# Web Framework
 fastapi
 uvicorn
-
 streamlit
+
+# RAG Dependencies
+chromadb
+faiss-cpu
+sentence-transformers
+pypdf
+tiktoken
+
+# Additional Utilities
+requests
+aiohttp

@@ -8,6 +8,8 @@ class Review(TypedDict):
     number1: int
     number2: int
     opertion: str
+
+    
 structured_model = llm_openrouter.with_structured_output(Review)
 
 result = structured_model.invoke("""can you calculate the addition of 2 and 8""")
