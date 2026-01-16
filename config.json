@@ -1,0 +1,13 @@
+{
+    "name": "Pranjul Pal",
+    "email": "pranjulpal04@gmail.com",
+    "phone": "+91-9548136921",
+    "whatsapp": "919548136921",
+    "github": "https://github.com/prajul-pal26",
+    "linkedin": "https://www.linkedin.com/in/pranjul-pal-2666p",
+    "ports": {
+        "react": 5173,
+        "chatbot": 8502,
+        "rag": 8503
+    }
+}

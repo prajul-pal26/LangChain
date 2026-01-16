@@ -5,6 +5,7 @@ import { Bot, Search, Rocket } from "lucide-react";
 import { AnimatedDots } from "@/components/ui/animated-dots";
 import { FloatingParticles } from "@/components/ui/floating-particles";
 import { GlowingOrbs } from "@/components/ui/glowing-orbs";
+import { config } from "@/config/site";
 
 export function LaunchSection() {
     return (
@@ -43,16 +44,6 @@ export function LaunchSection() {
                     viewport={{ once: true }}
                     className="text-center mb-12"
                 >
-                    <motion.div
-                        animate={{
-                            rotate: [0, 5, -5, 0],
-                            scale: [1, 1.1, 1],
-                        }}
-                        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                        className="text-5xl mb-4 inline-block"
-                    >
-                        🚀
-                    </motion.div>
                     <h2 className="text-4xl md:text-5xl font-bold mb-4 font-['Outfit']">
                         <span className="bg-clip-text text-transparent bg-gradient-to-r from-white to-white/80">
                             Launch a Project
@@ -72,7 +63,7 @@ export function LaunchSection() {
                     className="flex flex-col sm:flex-row justify-center items-center gap-6"
                 >
                     <motion.a
-                        href="http://localhost:8502"
+                        href={config.chatbotUrl}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="group relative px-8 py-5 rounded-2xl bg-gradient-to-r from-indigo-500 to-purple-500 text-white font-semibold text-lg overflow-hidden transition-all duration-300 hover:shadow-[0_20px_60px_-15px_rgba(99,102,241,0.5)]"
@@ -88,7 +79,7 @@ export function LaunchSection() {
                     </motion.a>
 
                     <motion.a
-                        href="http://localhost:8503"
+                        href={config.ragUrl}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="group relative px-8 py-5 rounded-2xl bg-gradient-to-r from-cyan-500 to-teal-500 text-white font-semibold text-lg overflow-hidden transition-all duration-300 hover:shadow-[0_20px_60px_-15px_rgba(6,182,212,0.5)]"

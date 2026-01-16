@@ -65,10 +65,9 @@ export function Features() {
                     viewport={{ once: true }}
                     className="text-center mb-16"
                 >
-                    <span className="text-4xl mb-4 block">🛠️</span>
                     <h2 className="text-4xl md:text-5xl font-bold mb-4 font-['Outfit']">
                         <span className="bg-clip-text text-transparent bg-gradient-to-r from-white to-white/80">
-                            Technologies I Use
+                            Technologies
                         </span>
                     </h2>
                     <p className="text-white/40 text-lg max-w-2xl mx-auto">

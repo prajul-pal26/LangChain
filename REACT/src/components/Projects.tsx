@@ -5,6 +5,7 @@ import { Bot, Search, ExternalLink } from "lucide-react";
 import { AnimatedDots } from "@/components/ui/animated-dots";
 import { FloatingParticles } from "@/components/ui/floating-particles";
 import { GlowingOrbs } from "@/components/ui/glowing-orbs";
+import { config } from "@/config/site";
 
 interface ProjectCardProps {
     icon: React.ReactNode;
@@ -59,8 +60,8 @@ function ProjectCard({ icon, iconBg, title, description, tags, status, link, del
                         <span
                             key={tag.name}
                             className={`px-3 py-1.5 rounded-full text-xs font-medium ${tag.variant === "primary"
-                                    ? "bg-indigo-500/20 text-indigo-300 border border-indigo-500/30"
-                                    : "bg-cyan-500/20 text-cyan-300 border border-cyan-500/30"
+                                ? "bg-indigo-500/20 text-indigo-300 border border-indigo-500/30"
+                                : "bg-cyan-500/20 text-cyan-300 border border-cyan-500/30"
                                 }`}
                         >
                             {tag.name}
@@ -91,7 +92,7 @@ export function Projects() {
                 { name: "Python", variant: "primary" as const },
             ],
             status: "Live & Running",
-            link: "http://localhost:8502",
+            link: config.chatbotUrl,
         },
         {
             icon: <Search className="w-8 h-8 text-cyan-400" />,
@@ -104,7 +105,7 @@ export function Projects() {
                 { name: "Embeddings", variant: "primary" as const },
             ],
             status: "Live & Running",
-            link: "http://localhost:8503",
+            link: config.ragUrl,
         },
     ];
 
@@ -127,7 +128,6 @@ export function Projects() {
                     viewport={{ once: true }}
                     className="text-center mb-16"
                 >
-                    <span className="text-4xl mb-4 block">🎯</span>
                     <h2 className="text-4xl md:text-5xl font-bold mb-4 font-['Outfit']">
                         <span className="bg-clip-text text-transparent bg-gradient-to-r from-white to-white/80">
                             Applications
