@@ -34,8 +34,26 @@ start_server() {
     lsof -ti:$PORT | xargs -r kill -9 2>/dev/null
     sleep 1
 
+    # Check for npm
+    if ! command -v npm &> /dev/null; then
+        echo "Error: npm is not installed. Please install Node.js and npm."
+        return 1
+    fi
+
     echo "Starting React development server..."
     cd $REACT_DIR
+    
+    # Check for node_modules and install if missing
+    if [ ! -d "node_modules" ]; then
+        echo "Dependencies not found. Installing..."
+        npm install
+        if [ $? -ne 0 ]; then
+            echo "Error: Failed to install dependencies."
+            cd ..
+            return 1
+        fi
+    fi
+
     npm run dev -- --host &
     echo $! > "$PID_FILE"
     cd ..
