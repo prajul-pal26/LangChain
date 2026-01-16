@@ -54,7 +54,7 @@ start_server() {
         fi
     fi
 
-    npm run dev -- --host &
+    npm run dev -- --host < /dev/null &
     echo $! > "$PID_FILE"
     cd ..
     
