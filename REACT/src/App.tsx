@@ -13,6 +13,7 @@ function App() {
             <Header />
             <main>
                 <Hero />
+                <Divider />
                 <Stats />
                 <Divider />
                 <Projects />

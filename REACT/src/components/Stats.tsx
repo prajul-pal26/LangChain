@@ -2,8 +2,9 @@
 
 import { motion } from "framer-motion";
 import { TrendingUp, Code, Star } from "lucide-react";
-import { Starfield } from "@/components/ui/starfield";
-import { WaveLines } from "@/components/ui/wave-lines";
+import { GridPattern } from "@/components/ui/grid-pattern";
+import { AnimatedDots } from "@/components/ui/animated-dots";
+import { FloatingParticles } from "@/components/ui/floating-particles";
 
 interface StatCardProps {
     number: string;
@@ -61,9 +62,10 @@ export function Stats() {
 
     return (
         <section className="relative py-24 bg-gradient-to-b from-[#08080c] via-[#0a0a10] to-[#0c0c12]">
-            {/* Starfield background - alternative to dots */}
-            <Starfield speed={0.3} starCount={80} />
-            <WaveLines />
+            {/* Grid background - same as Technologies section */}
+            <GridPattern />
+            <AnimatedDots speed={0.4} />
+            <FloatingParticles count={15} />
 
             {/* Subtle overlay */}
             <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(99,102,241,0.05)_0%,_transparent_50%)]" />

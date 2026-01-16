@@ -78,15 +78,16 @@ export function Hero() {
                         variants={fadeUpVariants}
                         initial="hidden"
                         animate="visible"
+                        className="pb-4"
                     >
-                        <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-bold mb-4 tracking-tight font-['Outfit'] whitespace-nowrap text-center flex justify-center items-center">
-                            <span className="bg-clip-text text-transparent bg-gradient-to-b from-white via-white/90 to-white/70">
+                        <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-bold mb-4 tracking-tight font-['Outfit'] whitespace-nowrap text-center flex justify-center items-center leading-tight">
+                            <span className="bg-clip-text text-transparent bg-gradient-to-b from-white via-white/90 to-white/70 pb-2">
                                 The Generative&nbsp;
                             </span>
                             <span
                                 className={cn(
                                     "bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 via-rose-400 to-amber-400",
-                                    "drop-shadow-[0_0_30px_rgba(255,255,255,0.3)]"
+                                    "drop-shadow-[0_0_30px_rgba(255,255,255,0.3)] pb-2"
                                 )}
                             >
                                 Edge
