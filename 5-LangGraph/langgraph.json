@@ -1,9 +1,12 @@
 {
     "graphs": {
         "bmi_workflow": "./Bmi_workflow/main.py:workflow",
-        "cricket_workflow": "./cricket_workflow/main.py:workflow"
+        "cricket_workflow": "./cricket_workflow/main.py:workflow",
+        "essay_evaluator": "./essay_evaluator/main.py:workflow",
+        "condition_workflow": "./condition_workflow/main.py:workflow",
+        "blog_workflow": "./Blog_generator/main.py:workflow"
     },
-    "env": "./.env",
+    "env": "../.env",
     "python_version": "3.11",
     "dependencies": [
         "langgraph",
