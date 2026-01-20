@@ -3,12 +3,12 @@ import os
 from dotenv import load_dotenv
 
 # ✅ LOAD .env FIRST
-load_dotenv()
+# load_dotenv()
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
 from langgraph.graph import StateGraph, START, END
-from Node_function import *
+from Bmi_workflow.Node_function import *
 
 graph = StateGraph(BMIState)
 
@@ -22,6 +22,7 @@ graph.add_edge("calculate_bmi", END)
 # compile graph
 workflow = graph.compile()
 
-# execute
-output = workflow.invoke({"height": 1.8, "weight": 70})
-print(output)
+# execute only when run directly (not when imported by LangGraph Studio)
+if __name__ == "__main__":
+    output = workflow.invoke({"height": 1.8, "weight": 70})
+    print(output)
