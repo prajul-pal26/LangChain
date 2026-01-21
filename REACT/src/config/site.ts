@@ -7,14 +7,23 @@
 
 import rootConfig from '@config';
 
+// Detect if we're in production (Vite sets this based on build mode)
+const isProduction = import.meta.env.PROD;
+
 // Extend with computed URLs
 export const config = {
     ...rootConfig,
-    // Auto-generate URLs from ports
-    chatbotUrl: `http://localhost:${rootConfig.ports.chatbot}`,
-    ragUrl: `http://localhost:${rootConfig.ports.rag}`,
+    // In production, use relative URLs that nginx will proxy
+    // In development, use localhost with ports
+    chatbotUrl: isProduction
+        ? (rootConfig.production?.chatbotUrl || '/chatbot/')
+        : `http://localhost:${rootConfig.ports.chatbot}`,
+    ragUrl: isProduction
+        ? (rootConfig.production?.ragUrl || '/rag/')
+        : `http://localhost:${rootConfig.ports.rag}`,
 };
 
 // For backward compatibility
 export const siteConfig = config;
 export default config;
+

@@ -9,5 +9,10 @@
         "react": 5173,
         "chatbot": 8502,
         "rag": 8503
+    },
+    "production": {
+        "baseUrl": "",
+        "chatbotUrl": "/chatbot/",
+        "ragUrl": "/rag/"
     }
 }

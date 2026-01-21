@@ -96,10 +96,35 @@ case "${1:-start}" in
         stop_server
         start_server
         ;;
+    build)
+        echo "Building production bundle..."
+        cd $REACT_DIR
+        npm run build
+        if [ $? -eq 0 ]; then
+            echo ""
+            echo "Build complete! Output in $REACT_DIR/dist/"
+            echo "Deploy this folder to your web server."
+        else
+            echo "Build failed!"
+        fi
+        cd ..
+        ;;
+    preview)
+        echo "Starting production preview server..."
+        cd $REACT_DIR
+        if [ ! -d "dist" ]; then
+            echo "No production build found. Running 'npm run build' first..."
+            npm run build
+        fi
+        npm run preview -- --host
+        cd ..
+        ;;
     *)
-        echo "Usage: source main.sh [start|stop|restart]"
+        echo "Usage: source main.sh [start|stop|restart|build|preview]"
         echo "  start   - Start the React dev server (default)"
         echo "  stop    - Stop the server"
         echo "  restart - Restart the server"
+        echo "  build   - Build production bundle"
+        echo "  preview - Preview production build locally"
         ;;
 esac
