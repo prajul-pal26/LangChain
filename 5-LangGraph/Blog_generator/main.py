@@ -15,7 +15,9 @@ graph = StateGraph(BlogState)
 
 # Routing function for conditional edges
 def route_evaluation(state: BlogState):
-    if state["evaluation"] == "approved" or state["iteration"] >= state["max_iterations"]:
+    iteration = state.get("iteration", 0)
+    max_iterations = state.get("max_iterations", 5)
+    if state.get("evaluation") == "approved" or iteration >= max_iterations:
         return "approved"
     else:
         return "needs_improvement"
@@ -48,12 +50,15 @@ workflow = graph.compile()
 
 
 if __name__ == "__main__":
+    # Only 2 inputs required
+    topic = "Getting Started with FastAPI: A Complete Guide"
+    target_audience = "intermediate Python developers"
+    
     output = workflow.invoke({
-        "topic": "Getting Started with FastAPI: A Complete Guide",
-        "target_audience": "intermediate Python developers",
-        "iteration": 0,
-        "max_iterations": 3,
-        "blog_history": [],
-        "feedback_history": []
+        "topic": topic,
+        "target_audience": target_audience,
     })
     print(output["blog_content"])
+
+
+

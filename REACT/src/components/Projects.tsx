@@ -1,11 +1,10 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Bot, Search, ExternalLink } from "lucide-react";
+import { Bot, Search, ExternalLink, FileEdit } from "lucide-react";
 import { AnimatedDots } from "@/components/ui/animated-dots";
 import { FloatingParticles } from "@/components/ui/floating-particles";
 import { GlowingOrbs } from "@/components/ui/glowing-orbs";
-import { config } from "@/config/site";
 
 interface ProjectCardProps {
     icon: React.ReactNode;
@@ -92,7 +91,7 @@ export function Projects() {
                 { name: "Python", variant: "primary" as const },
             ],
             status: "Live & Running",
-            link: config.chatbotUrl,
+            link: "#projects",
         },
         {
             icon: <Search className="w-8 h-8 text-cyan-400" />,
@@ -105,7 +104,20 @@ export function Projects() {
                 { name: "Embeddings", variant: "primary" as const },
             ],
             status: "Live & Running",
-            link: config.ragUrl,
+            link: "#projects",
+        },
+        {
+            icon: <FileEdit className="w-8 h-8 text-emerald-400" />,
+            iconBg: "bg-gradient-to-br from-emerald-500/20 to-emerald-500/5",
+            title: "Blog Generator",
+            description: "AI-powered SEO blog generator using LangGraph workflows. Researches keywords, generates content, evaluates quality, and optimizes for search rankings.",
+            tags: [
+                { name: "LangGraph", variant: "primary" as const },
+                { name: "LangSmith", variant: "secondary" as const },
+                { name: "SEO", variant: "primary" as const },
+            ],
+            status: "Live & Running",
+            link: "/blog-generator",
         },
     ];
 
@@ -139,7 +151,7 @@ export function Projects() {
                 </motion.div>
 
                 {/* Projects grid */}
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
                     {projects.map((project, index) => (
                         <ProjectCard
                             key={project.title}

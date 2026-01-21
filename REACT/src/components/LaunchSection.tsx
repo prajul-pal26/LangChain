@@ -1,11 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Bot, Search, Rocket } from "lucide-react";
+import { Bot, Search, Rocket, FileEdit } from "lucide-react";
+import { Link } from "react-router-dom";
 import { AnimatedDots } from "@/components/ui/animated-dots";
 import { FloatingParticles } from "@/components/ui/floating-particles";
 import { GlowingOrbs } from "@/components/ui/glowing-orbs";
-import { config } from "@/config/site";
 
 export function LaunchSection() {
     return (
@@ -62,10 +62,8 @@ export function LaunchSection() {
                     viewport={{ once: true }}
                     className="flex flex-col sm:flex-row justify-center items-center gap-6"
                 >
-                    <motion.a
-                        href={config.chatbotUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                    <motion.button
+                        onClick={(e) => e.preventDefault()}
                         className="group relative px-8 py-5 rounded-2xl bg-gradient-to-r from-indigo-500 to-purple-500 text-white font-semibold text-lg overflow-hidden transition-all duration-300 hover:shadow-[0_20px_60px_-15px_rgba(99,102,241,0.5)]"
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
@@ -76,12 +74,10 @@ export function LaunchSection() {
                             Launch Chatbot
                             <Rocket className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
                         </span>
-                    </motion.a>
+                    </motion.button>
 
-                    <motion.a
-                        href={config.ragUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                    <motion.button
+                        onClick={(e) => e.preventDefault()}
                         className="group relative px-8 py-5 rounded-2xl bg-gradient-to-r from-cyan-500 to-teal-500 text-white font-semibold text-lg overflow-hidden transition-all duration-300 hover:shadow-[0_20px_60px_-15px_rgba(6,182,212,0.5)]"
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
@@ -92,7 +88,22 @@ export function LaunchSection() {
                             Launch RAG
                             <Rocket className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
                         </span>
-                    </motion.a>
+                    </motion.button>
+
+                    <Link to="/blog-generator">
+                        <motion.div
+                            className="group relative px-8 py-5 rounded-2xl bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-semibold text-lg overflow-hidden transition-all duration-300 hover:shadow-[0_20px_60px_-15px_rgba(16,185,129,0.5)]"
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                        >
+                            <div className="absolute inset-0 bg-gradient-to-r from-emerald-600 to-teal-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                            <span className="relative flex items-center gap-3">
+                                <FileEdit className="w-6 h-6" />
+                                Launch Blog Generator
+                                <Rocket className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+                            </span>
+                        </motion.div>
+                    </Link>
                 </motion.div>
             </div>
         </section>

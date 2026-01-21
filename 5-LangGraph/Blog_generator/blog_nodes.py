@@ -51,7 +51,7 @@ def generate_blog(state: BlogState):
 Write a comprehensive technical blog post on: "{state['topic']}"
 Target Audience: {state.get('target_audience', 'intermediate developers')}
 Researched Keywords: {state.get('keywords', 'N/A')}
-This is revision #{state['iteration'] + 1}.
+This is revision #{state.get('iteration', 0) + 1}.
 
 ## BLOG STRUCTURE REQUIREMENTS:
 
@@ -220,7 +220,7 @@ Return the COMPLETE improved blog post in Markdown format.
         """)
     ]
     response = optimizer_llm.invoke(message).content
-    iteration = state['iteration'] + 1
+    iteration = state.get('iteration', 0) + 1
     return {
         'blog_content': response,
         'iteration': iteration,

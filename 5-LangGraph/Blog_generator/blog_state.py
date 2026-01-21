@@ -2,10 +2,12 @@ from typing import TypedDict, Literal, Annotated
 from pydantic import BaseModel, Field
 import operator
 
-class BlogState(TypedDict):
+class BlogState(TypedDict, total=False):
+    # Required inputs
     topic: str
-    keywords: str
     target_audience: str  # e.g., "beginners", "intermediate", "advanced"
+    # Auto-populated fields
+    keywords: str
     blog_content: str
     evaluation: Literal["approved", "needs_improvement"]
     feedback: str

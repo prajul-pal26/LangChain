@@ -21,6 +21,7 @@ export const config = {
     ragUrl: isProduction
         ? (rootConfig.production?.ragUrl || '/rag/')
         : `http://localhost:${rootConfig.ports.rag}`,
+    // Blog Generator uses internal React route: /blog-generator
 };
 
 // For backward compatibility

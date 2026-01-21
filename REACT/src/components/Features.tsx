@@ -40,9 +40,11 @@ export function Features() {
         { icon: "🦜", title: "LangChain", description: "Building LLM-powered applications" },
         { icon: "🔍", title: "RAG", description: "Retrieval Augmented Generation" },
         { icon: "🤖", title: "AI Agents", description: "Autonomous task execution" },
-        { icon: "🎨", title: "Streamlit", description: "Beautiful web interfaces" },
-        { icon: "🐍", title: "Python", description: "Core programming language" },
-        { icon: "💾", title: "Vector DBs", description: "Semantic search & storage" },
+        { icon: "🌐", title: "LangGraph", description: "Stateful AI workflows" },
+        { icon: "🔬", title: "LangSmith", description: "LLM observability & tracing" },
+        { icon: "⚡", title: "FastAPI", description: "High-performance Python APIs" },
+        { icon: "☁️", title: "AWS", description: "Cloud infrastructure & services" },
+        { icon: "🗄️", title: "Redis", description: "Fast caching & memory" },
     ];
 
     return (
@@ -76,7 +78,7 @@ export function Features() {
                 </motion.div>
 
                 {/* Features grid */}
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 max-w-5xl mx-auto">
+                <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-4">
                     {features.map((feature, index) => (
                         <FeatureCard
                             key={feature.title}

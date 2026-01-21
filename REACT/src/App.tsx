@@ -1,29 +1,28 @@
-import { Header } from "@/components/Header";
-import { Hero } from "@/components/Hero";
-import { Stats } from "@/components/Stats";
-import { Divider } from "@/components/Divider";
-import { Projects } from "@/components/Projects";
-import { Features } from "@/components/Features";
-import { LaunchSection } from "@/components/LaunchSection";
-import { Footer } from "@/components/Footer";
+import { Routes, Route } from "react-router-dom";
+import { HomePage } from "@/pages/HomePage";
+import { BlogsPage } from "@/pages/BlogsPage";
+import { BlogPostPage } from "@/pages/BlogPostPage";
+import { AdminLayout } from "@/components/admin/AdminLayout";
+import { DashboardPage } from "@/pages/admin/DashboardPage";
+import { BlogListPage } from "@/pages/admin/BlogListPage";
+import { BlogEditorPage } from "@/pages/admin/BlogEditorPage";
 
 function App() {
     return (
-        <div className="min-h-screen bg-[#030303]">
-            <Header />
-            <main>
-                <Hero />
-                <Divider />
-                <Stats />
-                <Divider />
-                <Projects />
-                <Divider />
-                <Features />
-                <Divider />
-                <LaunchSection />
-            </main>
-            <Footer />
-        </div>
+        <Routes>
+            {/* Public Routes */}
+            <Route path="/" element={<HomePage />} />
+            <Route path="/blogs" element={<BlogsPage />} />
+            <Route path="/blogs/:slug" element={<BlogPostPage />} />
+
+            {/* Admin Routes */}
+            <Route path="/blog-generator" element={<AdminLayout />}>
+                <Route index element={<DashboardPage />} />
+                <Route path="blogs" element={<BlogListPage />} />
+                <Route path="blogs/new" element={<BlogEditorPage />} />
+                <Route path="blogs/edit/:id" element={<BlogEditorPage />} />
+            </Route>
+        </Routes>
     );
 }
 

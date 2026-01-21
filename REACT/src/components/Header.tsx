@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Github, Linkedin, Mail, Phone, Sparkles } from "lucide-react";
+import { Link, useLocation } from "react-router-dom";
 import { cn } from "@/lib/utils";
 import { PhoneModal, EmailModal } from "@/components/ui/phone-modal";
 import { siteConfig } from "@/config/site";
@@ -24,11 +25,16 @@ export function Header() {
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
+    const location = useLocation();
+    const isHomePage = location.pathname === "/";
+
     const navLinks = [
-        { name: "Home", href: "#hero" },
-        { name: "Projects", href: "#projects" },
-        { name: "Technologies", href: "#features" },
-        { name: "Launch", href: "#launch" },
+        { name: "Home", href: isHomePage ? "#hero" : "/", isRoute: !isHomePage },
+        { name: "Projects", href: isHomePage ? "#projects" : "/#projects", isRoute: !isHomePage },
+        { name: "Technologies", href: isHomePage ? "#features" : "/#features", isRoute: !isHomePage },
+        { name: "Blogs", href: "/blogs", isRoute: true },
+        { name: "Admin", href: "/blog-generator", isRoute: true },
+        { name: "Launch", href: isHomePage ? "#launch" : "/#launch", isRoute: !isHomePage },
     ];
 
     const handlePhoneClick = (e: React.MouseEvent) => {
@@ -59,26 +65,38 @@ export function Header() {
                 <div className="container mx-auto px-4 md:px-6">
                     <div className="flex items-center justify-between h-20">
                         {/* Logo */}
-                        <motion.a
-                            href="#hero"
-                            className="flex items-center gap-2 text-white font-bold text-xl font-['Outfit']"
-                            whileHover={{ scale: 1.05 }}
-                        >
-                            <Sparkles className="w-5 h-5 text-indigo-400" />
-                            {name.split(' ')[0]}
-                        </motion.a>
+                        <Link to="/">
+                            <motion.div
+                                className="flex items-center gap-2 text-white font-bold text-xl font-['Outfit']"
+                                whileHover={{ scale: 1.05 }}
+                            >
+                                <Sparkles className="w-5 h-5 text-indigo-400" />
+                                {name.split(' ')[0]}
+                            </motion.div>
+                        </Link>
 
                         {/* Desktop Navigation */}
                         <nav className="hidden md:flex items-center gap-8">
                             {navLinks.map((link) => (
-                                <motion.a
-                                    key={link.name}
-                                    href={link.href}
-                                    className="text-white/60 hover:text-white transition-colors duration-300 text-sm font-medium"
-                                    whileHover={{ y: -2 }}
-                                >
-                                    {link.name}
-                                </motion.a>
+                                link.isRoute ? (
+                                    <Link key={link.name} to={link.href}>
+                                        <motion.span
+                                            className="text-white/60 hover:text-white transition-colors duration-300 text-sm font-medium"
+                                            whileHover={{ y: -2 }}
+                                        >
+                                            {link.name}
+                                        </motion.span>
+                                    </Link>
+                                ) : (
+                                    <motion.a
+                                        key={link.name}
+                                        href={link.href}
+                                        className="text-white/60 hover:text-white transition-colors duration-300 text-sm font-medium"
+                                        whileHover={{ y: -2 }}
+                                    >
+                                        {link.name}
+                                    </motion.a>
+                                )
                             ))}
                         </nav>
 
@@ -162,14 +180,25 @@ export function Header() {
                             <div className="container mx-auto px-4 py-6">
                                 <nav className="flex flex-col gap-4">
                                     {navLinks.map((link) => (
-                                        <a
-                                            key={link.name}
-                                            href={link.href}
-                                            onClick={() => setIsMobileMenuOpen(false)}
-                                            className="text-white/70 hover:text-white transition-colors duration-300 text-lg font-medium py-2"
-                                        >
-                                            {link.name}
-                                        </a>
+                                        link.isRoute ? (
+                                            <Link
+                                                key={link.name}
+                                                to={link.href}
+                                                onClick={() => setIsMobileMenuOpen(false)}
+                                                className="text-white/70 hover:text-white transition-colors duration-300 text-lg font-medium py-2"
+                                            >
+                                                {link.name}
+                                            </Link>
+                                        ) : (
+                                            <a
+                                                key={link.name}
+                                                href={link.href}
+                                                onClick={() => setIsMobileMenuOpen(false)}
+                                                className="text-white/70 hover:text-white transition-colors duration-300 text-lg font-medium py-2"
+                                            >
+                                                {link.name}
+                                            </a>
+                                        )
                                     ))}
                                 </nav>
 
