@@ -1,14 +1,16 @@
 from pydantic import BaseModel, Field
 from langchain_core.messages import HumanMessage, SystemMessage
-from .model_connection import llm_openrouter
 import operator
 import sys
 import os
 from dotenv import load_dotenv
-from .state import *
 
-# ✅ LOAD .env FIRST
+# LOAD .env FIRST
 load_dotenv()
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+
+from model_connection import llm_openrouter
+from twitter_state import PostState, TweetEvaluation
 
 generator_llm = llm_openrouter
 evaluator_llm = llm_openrouter

@@ -8,31 +8,28 @@ load_dotenv()
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from langgraph.graph import StateGraph, START, END
-from blog_nodes import generate_blog, evaluate_blog, optimize_blog, research_keywords
-from blog_state import BlogState
+from twitter_nodes import generate_tweet, evaluate_tweet, optimize_tweet
+from twitter_state import PostState
 
-graph = StateGraph(BlogState)
+graph = StateGraph(PostState)
 
 # Routing function for conditional edges
-def route_evaluation(state: BlogState):
+def route_evaluation(state: PostState):
     if state["evaluation"] == "approved" or state["iteration"] >= state["max_iterations"]:
         return "approved"
     else:
         return "needs_improvement"
 
 # add nodes
-# add nodes
-graph.add_node("research_keywords", research_keywords)
-graph.add_node("generate", generate_blog)
-graph.add_node("evaluate", evaluate_blog)
-graph.add_node("optimize", optimize_blog)
+graph.add_node("generate", generate_tweet)
+graph.add_node("evaluate", evaluate_tweet)
+graph.add_node("optimize", optimize_tweet)
 
 # add edges
-graph.add_edge(START, "research_keywords")
-graph.add_edge("research_keywords", "generate")
+graph.add_edge(START, "generate")
 graph.add_edge("generate", "evaluate")
 
-# add conditional edge - routes based on evaluation
+# add conditional edge - routes based on discriminant value
 graph.add_conditional_edges(
     "evaluate",
     route_evaluation,
@@ -47,13 +44,13 @@ graph.add_edge("optimize", "evaluate")
 workflow = graph.compile()
 
 
+
 if __name__ == "__main__":
     output = workflow.invoke({
-        "topic": "Getting Started with FastAPI: A Complete Guide",
-        "target_audience": "intermediate Python developers",
+        "topic": "AI",
         "iteration": 0,
         "max_iterations": 3,
-        "blog_history": [],
+        "tweet_history": [],
         "feedback_history": []
     })
-    print(output["blog_content"])
+    print(output["tweet"])
