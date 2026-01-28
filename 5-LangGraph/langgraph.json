@@ -5,7 +5,8 @@
         "essay_evaluator": "./essay_evaluator/main.py:workflow",
         "condition_workflow": "./condition_workflow/main.py:workflow",
         "twitter_workflow": "./Twitter_generator/main.py:workflow",
-        "Blog_workflow": "./Blog_generator/main.py:workflow"
+        "Blog_workflow": "./Blog_generator/main.py:workflow",
+        "ChatBot": "./Chatbot/main.py:workflow"
     },
     "env": "../.env",
     "python_version": "3.11",
