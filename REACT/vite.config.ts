@@ -28,14 +28,16 @@ export default defineConfig({
             },
         },
     },
-	server: {
-    host: true,
-    port: 5173,
-    allowedHosts: [
-        'generativedge.cloud',
-        'www.generativedge.cloud'
-    ],
-},
+    server: {
+        host: true,
+        port: 5173,
+        allowedHosts: [
+            'generativedge.cloud',
+            'www.generativedge.cloud',
+            'generativedge.com',
+            'www.generativedge.com'
+        ],
+    },
 
     preview: {
         host: true,
