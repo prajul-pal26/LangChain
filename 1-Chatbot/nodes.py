@@ -14,10 +14,10 @@ from state import *
 
 def chat_node(state: ChatState):
     # take user query from state 
-    messages = ChatState['messages']
+    messages = state['messages']
 
     # send to llm
-    response = llm.invoke(messages)
+    response = llm_openrouter.invoke(messages)
 
     # response store state
     return {'messages': [response]}

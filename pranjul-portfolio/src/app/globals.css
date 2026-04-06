@@ -1,0 +1,108 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-bg: #0C0C0C;
+  --color-bg-2: #111114;
+  --color-bg-3: #1A1A20;
+  --color-bg-4: #242430;
+  --color-gold: #F0C05A;
+  --color-gold-dim: #C9A044;
+  --color-t: #F2F0EB;
+  --color-t-mid: rgba(242, 240, 235, 0.60);
+  --color-t-dim: rgba(242, 240, 235, 0.38);
+
+  --font-family-serif: var(--font-serif);
+  --font-family-sans: var(--font-sans);
+  --font-family-mono: var(--font-mono);
+
+  --animate-marquee: marquee 28s linear infinite;
+  --animate-pulse-gold: pulseGold 2s infinite;
+  --animate-fade-up: fadeUp 0.7s ease forwards;
+
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  @keyframes pulseGold {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(240, 192, 90, 0.30); }
+    50% { box-shadow: 0 0 0 7px rgba(240, 192, 90, 0); }
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(22px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+}
+
+:root {
+  --gold-pale: rgba(240, 192, 90, 0.08);
+  --gold-border: rgba(240, 192, 90, 0.15);
+  --border: rgba(255, 255, 255, 0.06);
+  --border-h: rgba(255, 255, 255, 0.12);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-t);
+  overflow-x: hidden;
+}
+
+/* Grid mesh background for Hero area only */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.07) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 75%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+::selection {
+  background: var(--color-gold);
+  color: #fff;
+}
+
+/* ── Dark grey sections (Hero, Experience, Skills, Contact) ── */
+.light-sections {
+  --color-bg: #2E2E36;
+  --color-bg-2: #FFF3E0;
+  --color-bg-3: #3A3A44;
+  --color-bg-4: #46464F;
+  --color-gold: #F0C05A;
+  --color-gold-dim: #C9A044;
+  --color-t: #F2F0EB;
+  --color-t-mid: rgba(242, 240, 235, 0.70);
+  --color-t-dim: rgba(242, 240, 235, 0.50);
+  --gold-pale: rgba(240, 192, 90, 0.12);
+  --gold-border: rgba(240, 192, 90, 0.20);
+  --border: rgba(255, 255, 255, 0.10);
+  --border-h: rgba(255, 255, 255, 0.18);
+
+  background: var(--color-bg);
+  color: var(--color-t);
+}
+
+/* ── Skin sections (About, Projects, Education) ── */
+.skin-section {
+  --color-bg: #FFEACC;
+  --color-bg-3: #FFE0B5;
+  --color-bg-4: #FFD6A0;
+  --color-t: #111111;
+  --color-t-mid: #333333;
+  --color-t-dim: #666666;
+  --color-gold: #8B6914;
+  --color-gold-dim: #6B5010;
+  --gold-pale: rgba(139, 105, 20, 0.10);
+  --gold-border: rgba(139, 105, 20, 0.22);
+  --border: rgba(17, 17, 17, 0.14);
+  --border-h: rgba(17, 17, 17, 0.22);
+  color: var(--color-t);
+}
